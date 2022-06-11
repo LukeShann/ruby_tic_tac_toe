@@ -1,20 +1,8 @@
 class Board
-  attr_accessor :state
+  attr_reader :state
 
   def initialize
     @state = Array.new(3) { Array.new(3, ' ') }
-  end
-
-  def print_board
-    board = self.state
-    line = '    ----------'
-    puts "\n    1    2    3"
-    puts "\n  A  #{board[0][0]} | #{board[1][0]} | #{board[2][0]}"
-    puts line
-    puts "  B  #{board[0][1]} | #{board[1][1]} | #{board[2][1]}"
-    puts line
-    puts "  C  #{board[0][2]} | #{board[1][2]} | #{board[2][2]}"
-    puts
   end
 
   def make_move(coords, player)
