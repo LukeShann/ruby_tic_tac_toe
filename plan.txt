@@ -1,0 +1,15 @@
+Run program
+
+Print welcome and instructions
+
+
+Print empty board with axis
+
+State whose turn it is
+
+Prompt for input
+
+Check if move is possible
+  If so, update board & check for winner
+  else, send error message and re-Prompt
+
