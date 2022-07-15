@@ -11,7 +11,7 @@ class Game
     @turn = 'O'
     @turns_taken = 0
 
-    self.play_game
+    play_game
   end
 
   def play_game
@@ -19,18 +19,18 @@ class Game
     print_message("Get three in a row to win!")
     print_message("Enter the co-ordinates to play (e.g. 1A)")
     loop do
-      self.take_turn
+      take_turn
       if board.has_won? then
-        print_board(self.board.state)
-        print_message("#{self.turn} Wins!")
-        self.ask_for_reset
+        print_board(board.state)
+        print_message("#{@turn} Wins!")
+        ask_for_reset
         break
-      elsif self.turns_taken >= 9 then
-        print_board(self.board.state)
+      elsif turns_taken >= 9 then
+        print_board(board.state)
         print_message("Stale Mate!")
-        self.ask_for_reset
+        ask_for_reset
       else
-        self.turn = self.turn == 'X' ? 'O' : 'X'
+        @turn = @turn == 'X' ? 'O' : 'X'
       end
     end
   end
@@ -38,25 +38,25 @@ class Game
   def ask_for_reset
     print_message("Press any key to reset")
     gets
-    self.reset
+    reset
   end
 
   def reset
-    self.board = Board.new
-    self.turns_taken = 0
-    self.play_game
+    @board = Board.new
+    @turns_taken = 0
+    play_game
   end
 
   def take_turn
-    print_board(self.board.state)
-    print_message("It's #{self.turn}'s turn to play")
+    print_board(board.state)
+    print_message("It's #{turn}'s turn to play")
     move = []
     loop do
       move = get_coords
-      break if self.board.move_valid?(move)
+      break if board.move_valid?(move)
     end
-    self.board.make_move(move, self.turn)
-    self.turns_taken += 1
+    board.make_move(move, turn)
+    @turns_taken += 1
   end
 
   def get_coords
