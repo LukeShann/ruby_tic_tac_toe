@@ -1,8 +1,8 @@
-class Printer
+module Printer
   @@frame_width = 60
   @@board_width = 14
 
-  def self.print_board(board)
+  def print_board(board)
     print "\n"
     self.print_centered('    1    2    3', ' ')
     print "\n"
@@ -14,11 +14,11 @@ class Printer
     print "\n"
   end
 
-  def self.print_message(content)
+  def print_message(content)
     self.print_centered(content, '=')
   end
 
-  def self.print_centered(content, filler)
+  def print_centered(content, filler)
     margin = (@@frame_width - content.length) / 2 - 1
     margin.times { print filler }
     print " #{content} "
